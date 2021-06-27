@@ -1,6 +1,8 @@
 import React from 'react';
 import './App.css';
 import GithubSearchApp from "./components/GithubSearchApp";
+import {Provider} from "react-redux";
+import {store} from './redux/store';
 
 class App extends React.Component{
     constructor(props) {
@@ -16,7 +18,9 @@ class App extends React.Component{
                     <a href="#" className="navbar-brand">Github Search Application</a>
                 </nav>
 
-                <GithubSearchApp/>
+                <Provider store={store}>
+                    <GithubSearchApp/>
+                </Provider>
 
             </React.Fragment>
         );

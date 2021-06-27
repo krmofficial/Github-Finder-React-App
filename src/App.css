@@ -9,3 +9,15 @@
 .contactImg{
     margin-top: -70px;
 }
+
+.landing-page{
+    background: white url("assets/background.jpg") no-repeat fixed center;
+    background-size: cover;
+    height: 100vh;
+    color:white;
+}
+
+.wrapper{
+    background-color:rgba(0,0,0,0.5);
+    height: 100%;
+}

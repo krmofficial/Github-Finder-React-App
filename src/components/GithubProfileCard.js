@@ -1,26 +1,25 @@
 import React from 'react';
+import {useSelector} from "react-redux";
+import {USERINFO_FEATURE_KEY} from "../redux/userInfo/userInfoReducer";
 
-class GithubProfileCard extends React.Component{
-    constructor(props) {
-        super(props);
+let GithubProfileCard = () => {
 
-    }
+    let userDetails = useSelector((state) => {
+        return state[USERINFO_FEATURE_KEY].userInfo;
+    });
 
-    render() {
-        return (
-            <React.Fragment>
-                <div className="card">
-                    <img src={this.props.userDetails.avatar_url} className="img-fluid img-thumbnail" alt=""/>
-                    <div className="card-body">
-                        <span className="h5">{this.props.userDetails.name}</span>
-                        <p>{this.props.userDetails.bio}</p>
-                        <a href={this.props.userDetails.html_url} className="btn btn-sm btn-success" target="_blank">Profile</a>
-                    </div>
+    return (
+        <React.Fragment>
+            <div className="card">
+                <img src={userDetails.avatar_url} className="img-fluid img-thumbnail" alt=""/>
+                <div className="card-body">
+                    <span className="h5">{userDetails.name}</span>
+                    <p>{userDetails.bio}</p>
+                    <a href={userDetails.html_url} className="btn btn-sm btn-success" target="_blank">Profile</a>
                 </div>
-            </React.Fragment>
-        );
-    }
-
-}
+            </div>
+        </React.Fragment>
+    );
+};
 
 export default GithubProfileCard;

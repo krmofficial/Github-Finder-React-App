@@ -1,98 +1,62 @@
-import React from 'react'
+import React, {useEffect, useState} from 'react'
 import GithubSearch from "./GithubSearch";
-import Axios from "axios";
-import {GithubClientId} from './GithubCredentials';
 import GithubProfile from "./GithubProfile";
 import GithubRepos from "./GithubRepos";
+import {useSelector} from "react-redux";
+import {USER_SEARCH_FEATURE_KEY} from "../redux/user/userReducer";
+import {USERINFO_FEATURE_KEY} from "../redux/userInfo/userInfoReducer";
+import {REPOS_FEATURE_KEY} from "../redux/userRepos/userReposReducer";
 
-class GithubSearchApp extends React.Component{
-    constructor(props) {
-        super(props);
-        this.state ={
-            username : '',
-            userInfo : {},
-            repos : [],
-            error : null
-        }
-    }
+let GithubSearchApp = () => {
 
-    pullUserName = (username)=>{
-        this.setState({
-            username : username
-        });
+    let username = useSelector((state) => {
+        return state[USER_SEARCH_FEATURE_KEY].username;
+    });
 
-        this.getUserInfo();
-        this.getRepos();
+    let userDetails = useSelector((state) => {
+        return state[USERINFO_FEATURE_KEY].userInfo;
+    });
 
-    };
+    let repos = useSelector((state) => {
+        return state[REPOS_FEATURE_KEY].repos;
+    });
 
-    getUserInfo = () => {
-       let dataUrl = `https://api.github.com/users/${this.state.username}?clientId=${GithubClientId}`;
-       Axios.get(dataUrl).then((response)=>{
-            this.setState({
-                userInfo : response.data
-            });
-       }).catch((err)=>{
-            this.setState({
-                error : err
-            });
-       });
-    };
-
-    getRepos = ()=> {
-        let dataUrl = `https://api.github.com/users/${this.state.username}/repos?clientId=${GithubClientId}`;
-        Axios.get(dataUrl).then((response)=>{
-            this.setState({
-                repos : response.data
-            });
-        }).catch((err)=>{
-            this.setState({
-                error : err
-            });
-        });
-    };
-
-
-
-    render() {
-        return (
-            <React.Fragment>
-                <div className="container mt-3">
-                    <div className="row">
-                        <div className="col">
-                            <div className="card">
-                                <div className="card-header bg-secondary text-white">
-                                    <h2>Github User Search</h2>
-                                </div>
-                                <div className="card-body">
-                                    <GithubSearch pushUsername={this.pullUserName} />
-                                </div>
+    return (
+        <React.Fragment>
+            <div className="container mt-3">
+                <div className="row">
+                    <div className="col">
+                        <div className="card">
+                            <div className="card-header bg-secondary text-white">
+                                <h2>Github User Search</h2>
+                                <h3>Username :- {username}</h3>
+                            </div>
+                            <div className="card-body">
+                                <GithubSearch/>
                             </div>
                         </div>
                     </div>
-
-                    {/*Github Profile*/}
-                    {
-                        Object.keys(this.state.username).length !== 0 ?
-                            <React.Fragment>
-                                <GithubProfile userDetails={this.state.userInfo}/>
-                            </React.Fragment>
-                            : null
-                    }
-                    {
-                        this.state.repos.length !== 0 ?
-                            <React.Fragment>
-                                <GithubRepos repos={this.state.repos}/>
-                            </React.Fragment>
-                            : null
-                    }
-
-
                 </div>
-            </React.Fragment>
-        );
-    }
 
-}
+                {/*Github Profile*/}
+                {
+                    Object.keys(userDetails).length > 0 ? <React.Fragment>
+                        <GithubProfile/>
+                    </React.Fragment> : null
+                }
+
+
+
+                {
+                    repos.length !== 0 ?
+                        <React.Fragment>
+                            <GithubRepos/>
+                        </React.Fragment>
+                        : null
+                }
+            </div>
+        </React.Fragment>
+    );
+};
 
 export default GithubSearchApp;

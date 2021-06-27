@@ -1,42 +1,39 @@
-import React from 'react';
+import React, {useState} from 'react';
+import {useDispatch} from "react-redux";
+import {userSearch} from "../redux/user/userAction";
+import {fetchUserInfo} from "../redux/userInfo/userInfoAction";
+import {fetchRepos} from "../redux/userRepos/userReposAction";
 
-class GithubSearch extends React.Component{
+let GithubSearch = () => {
 
-    constructor(props) {
-        super(props);
-       this.state = {
-           username : ''
-       }
-    }
+    let dispatch = useDispatch();
 
+    let [user, setUser] = useState('');
 
-    updateInput = (event)=>{
-        this.setState({
-            username : event.target.value
-        });
+    let updateInput = (event)=>{
+        setUser(event.target.value);
     };
 
-    submitUsername = (event) => {
+    let submitUsername = (event) => {
         event.preventDefault();
-        this.props.pushUsername(this.state.username);
+        dispatch(userSearch(user));
+        dispatch(fetchUserInfo(user));
+        dispatch(fetchRepos(user));
     };
 
-    render() {
-        return (
-            <React.Fragment>
-                <form action="" className="form-inline" onSubmit={this.submitUsername}>
-                    <div className="form-group">
-                        <input size="40"
-                               onChange={this.updateInput}
-                               type="text" placeholder="Enter Github User" className="form-control"/>
-                    </div>
-                    <button className="btn btn-secondary">Search</button>
-                </form>
-            </React.Fragment>
-        );
-    }
-
-
-}
+    return (
+        <React.Fragment>
+            <form action="" className="form-inline" onSubmit={submitUsername}>
+                <div className="form-group">
+                    <input size="40"
+                           onChange={updateInput}
+                           type="text" placeholder="Enter Github User" className="form-control"/>
+                </div>
+                {/*<h2>{user}</h2>*/}
+                <button className="btn btn-secondary">Search</button>
+            </form>
+        </React.Fragment>
+    );
+};
 
 export default GithubSearch;
