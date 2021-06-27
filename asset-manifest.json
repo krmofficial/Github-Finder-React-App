@@ -1,0 +1,28 @@
+{
+  "files": {
+    "main.css": "/React-Live-Website/static/css/main.2ce217b0.chunk.css",
+    "main.js": "/React-Live-Website/static/js/main.4d9726f9.chunk.js",
+    "main.js.map": "/React-Live-Website/static/js/main.4d9726f9.chunk.js.map",
+    "runtime-main.js": "/React-Live-Website/static/js/runtime-main.4130da5d.js",
+    "runtime-main.js.map": "/React-Live-Website/static/js/runtime-main.4130da5d.js.map",
+    "static/css/2.d0bdc3c1.chunk.css": "/React-Live-Website/static/css/2.d0bdc3c1.chunk.css",
+    "static/js/2.b14511a0.chunk.js": "/React-Live-Website/static/js/2.b14511a0.chunk.js",
+    "static/js/2.b14511a0.chunk.js.map": "/React-Live-Website/static/js/2.b14511a0.chunk.js.map",
+    "index.html": "/React-Live-Website/index.html",
+    "precache-manifest.182123a0202fa114dd2146ea0c4710cd.js": "/React-Live-Website/precache-manifest.182123a0202fa114dd2146ea0c4710cd.js",
+    "service-worker.js": "/React-Live-Website/service-worker.js",
+    "static/css/2.d0bdc3c1.chunk.css.map": "/React-Live-Website/static/css/2.d0bdc3c1.chunk.css.map",
+    "static/css/main.2ce217b0.chunk.css.map": "/React-Live-Website/static/css/main.2ce217b0.chunk.css.map",
+    "static/js/2.b14511a0.chunk.js.LICENSE.txt": "/React-Live-Website/static/js/2.b14511a0.chunk.js.LICENSE.txt",
+    "static/media/mdb.css": "/React-Live-Website/static/media/arrow_right.d9ccc77c.svg",
+    "static/media/App.css": "/React-Live-Website/static/media/background.42bb9877.jpg",
+    "static/media/font-awesome-5.8.1.css": "/React-Live-Website/static/media/fa-solid-900.ee09ad75.woff"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.4130da5d.js",
+    "static/css/2.d0bdc3c1.chunk.css",
+    "static/js/2.b14511a0.chunk.js",
+    "static/css/main.2ce217b0.chunk.css",
+    "static/js/main.4d9726f9.chunk.js"
+  ]
+}
